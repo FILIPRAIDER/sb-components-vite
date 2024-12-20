@@ -1,21 +1,53 @@
 {
-  "name": "my-storybook",
-  "private": true,
-  "version": "0.0.0",
+  "name": "fb-custom-components",
+  "private": false,
+  "version": "0.0.1-rc5",
   "type": "module",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "keywords": [
+    "react",
+    "dev",
+    "felipe",
+    "berrio",
+    "curso"
+  ],
+  "license": "MIT",
+  "homepage": "https://filipraider.com",
+  "repository": {
+    "url": "https://github.com/FILIPRAIDER/sb-components-vite.git",
+    "type": "git"
+  },
+  "files": [
+    "dist/"
+  ],
+  "release": {
+    "branches": [
+      "main"
+    ]
+  },
+  "peerDependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
   "scripts": {
     "dev": "npm run storybook",
-    "build": "tsc -b && vite build",
+    "build": "npm run clean && tsc && npm run copyfiles",
     "lint": "eslint .",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "chromatic": "npx chromatic --project-token=chpt_5a19e51da15c14b"
+    "chromatic": "npx chromatic --project-token=chpt_5a19e51da15c14b",
+    "clean": "rimraf dist/",
+    "copyfiles": "copyfiles -u 1 src/**/*.css dist/",
+    "push:npm": "np"
   },
   "dependencies": {
-    "my-storybook": "file:",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "fb-custom-components": "file:",
+    "my-storybook": "file:"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.2",
@@ -31,11 +63,16 @@
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react-swc": "^3.5.0",
     "chromatic": "^11.20.2",
+    "copyfiles": "^2.4.1",
     "eslint": "^9.15.0",
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.14",
     "eslint-plugin-storybook": "^0.11.1",
     "globals": "^15.12.0",
+    "np": "^10.1.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "rimraf": "^6.0.1",
     "storybook": "^8.4.7",
     "typescript": "~5.6.2",
     "typescript-eslint": "^8.15.0",
